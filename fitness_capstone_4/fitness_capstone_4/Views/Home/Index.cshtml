@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+        <h1>Timer</h1>
+        <p class="lead"></p>
+        <p><a href=""</a></p>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+           
+            <p>
+                @helper GetAddEntryButtonVisibility()
+                {
+                    if ((string)ViewContext.RouteData.Values["controller"] == "Entries" &&
+                        (string)ViewContext.RouteData.Values["action"] == "Add")
+                    {
+                        <text>hidden</text>
+                    }
+                    else
+                    {
+                        <text>visible</text>
+                    }
+                }
+
+                <a href="@Url.Action("Add", "Entries")" style="visibility: @GetAddEntryButtonVisibility()"
+                   class="btn btn-primary navbar-btn navbar-right">
+                    <span class="glyphicon glyphicon-plus"></span> Add Entry
+                    <h3>Entries</h3>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Date</th>
+                                <th>Activity</th>
+                                <th>Duration</th>
+                                <th class="Hidden-xs">Intensity</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </tbody>
+                    </table>
+            </p>
